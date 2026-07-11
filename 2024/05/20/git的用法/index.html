@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#3367D6"/>
+  <link rel="apple-touch-icon" href="/icons-192.png">
+  <link rel="manifest" href="/manifest.json">
+  
+  <meta name="generator" content="Hexo 8.1.2">
+
+  
+    <meta name="description" content="记录生活点滴，分享技术经验">
+  
+
+  
+    <meta name="keywords" content="记录">
+  
+
+  
+    <meta name="author" content="Luo Anmin">
+  
+
+  
+
+  
+
+  <title>git的用法 | lam博客</title>
+
+  
+
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+
+  <!--mathjax latex数学公式显示支持-->
+  
+  
+
+  
+
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+  <div class="root-container">
+    
+<!-- header container -->
+<header class="header-container post">
+  
+    <div class="post-image" style="background-image: url(/imgs/cover/cover2.jpg)"></div>
+  
+
+  <!-- navbar -->
+<nav class="navbar">
+  <div class="navbar-content">
+    <!-- logo -->
+    <div class="navbar-logo">
+      <a href="/">
+        
+          lam博客
+        
+      </a>
+    </div>
+    <!-- link -->
+    <div class="navbar-link">
+      <div class="navbar-btn">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul class="navbar-list">
+        
+          <li class="navbar-list-item"><a href="/">首页</a></li>
+        
+          <li class="navbar-list-item"><a href="/links">友链</a></li>
+        
+          <li class="navbar-list-item"><a href="/about">关于</a></li>
+        
+          <li class="navbar-list-item"><a href="/archives">归档</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+    <div class="header-content">
+      <div class="post-text layout-block">
+        <div class="layout-margin">
+          <h1 class="title-wrap">git的用法</h1>
+          <h2 class="title-sub-wrap">
+            <strong>Luo Anmin</strong>
+            <span>发布于</span>
+            <time  class="article-date" datetime="2024-05-19T16:00:00.000Z" itemprop="datePublished">2024-05-20</time>
+          </h2>
+          
+            <h2 class="last-time">
+              <span>最后更新于</span>
+              <time  class="article-updated" datetime="2026-07-11T22:38:43.789Z" itemprop="dateUpdated">2026-07-12</time>
+            </h2>
+          
+          
+          <ul class="wrap-list dark">
+  
+</ul>
+          <ul class="wrap-list dark">
+  
+</ul>
+        </div>
+      </div>
+    </div>
+  
+
+  
+  
+  
+</header>
+
+    <!-- 文章 -->
+
+<!-- 文章内容 -->
+<div class="body-container">
+  <article class="content-container layout-block post-container">
+    <div class="article-info">
+      
+      
+      
+      
+      <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
+        <div class="aplayer-box" data-name='让寂寞别走' data-artist='本兮' data-url='/music/本兮 - 让寂寞别走.mp3' data-cover='/imgs/content/cover2-music.png' ></div>
+
+<h2 id="git高频命令"><a href="#git高频命令" class="headerlink" title="git高频命令"></a>git高频命令</h2><h3 id="配置用户信息"><a href="#配置用户信息" class="headerlink" title="配置用户信息"></a>配置用户信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置用户名</span></span><br><span class="line">git config --global user.name <span class="string">&quot;yourname&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置用户邮箱</span></span><br><span class="line">git config --global user.email <span class="string">&quot;youremail@xxx.com&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看当前的配置信息</span></span><br><span class="line">git config --global --list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过 alias 配置简写</span></span><br><span class="line"><span class="comment"># 例如使用 git co 代替 git checkout</span></span><br><span class="line">git config --global alias.co checkout</span><br></pre></td></tr></table></figure>
+<h3 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a>ssh</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 向远端仓库提交代码时，需要在远端仓库添加本地生成的 ssh key</span></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;youremail@xxx.com&quot;</span></span><br><span class="line"><span class="comment"># 查看本地 ssh key</span></span><br><span class="line"><span class="built_in">cat</span> ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+
+<h3 id="git-clone-克隆仓库"><a href="#git-clone-克隆仓库" class="headerlink" title="git clone: 克隆仓库"></a>git clone: 克隆仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 克隆远端仓库到本地</span></span><br><span class="line">git <span class="built_in">clone</span> &lt;git url&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 克隆远端仓库到本地，并同时切换到指定分支 dev</span></span><br><span class="line">git <span class="built_in">clone</span> &lt;git url&gt; -b dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 克隆远端仓库到本地并指定本地仓库的文件夹名称为 my-project</span></span><br><span class="line">git <span class="built_in">clone</span> &lt;git url&gt; my-project</span><br></pre></td></tr></table></figure>
+
+<h3 id="git-add-提交到暂存区"><a href="#git-add-提交到暂存区" class="headerlink" title="git add: 提交到暂存区"></a>git add: 提交到暂存区</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将所有修改的文件都提交到暂存区</span></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将修改的文件中的指定的文件 a.js 和 b.js 提交到暂存区</span></span><br><span class="line">git add ./a.js ./b.js</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将 js 文件夹下修改的内容提交到暂存区</span></span><br><span class="line">git add ./js</span><br></pre></td></tr></table></figure>
+
+<h3 id="git-commit-提交到本地仓库"><a href="#git-commit-提交到本地仓库" class="headerlink" title="git commit: 提交到本地仓库"></a>git commit: 提交到本地仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将工作区内容提交到本地仓库，并添加提交信息 your commit message</span></span><br><span class="line">git commit -m <span class="string">&quot;your commit message&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将工作区内容提交到本地仓库，并对上一次 commit 记录进行覆盖</span></span><br><span class="line"><span class="comment"># 例如先执行 git commit -m &quot;commit1&quot; 提交了文件a，commit_sha为hash1；再执行 git commit -m &quot;commit2&quot; --amend 提交文件b，commit_sha为hash2。最终显示的是a，b文件的 commit 信息都是 &quot;commit2&quot;，commit_sha都是hash2</span></span><br><span class="line">git commit -m <span class="string">&quot;new message&quot;</span> --amend</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将工作区内容提交到本地仓库，并跳过 commit 信息填写</span></span><br><span class="line"><span class="comment"># 例如先执行 git commit -m &quot;commit1&quot; 提交了文件a，commit_sha为hash1；再执行 git commit --amend --no-edit 提交文件b，commit_sha为hash2。最终显示的是a，b文件的 commit 信息都是 &quot;commit1&quot;，commit_sha都是hash1</span></span><br><span class="line">git commit --amend --no-edit</span><br><span class="line"></span><br><span class="line"><span class="comment"># 跳过校验直接提交，很多项目配置 git hooks 验证代码是否符合 eslint、husky 等规则，校验不通过无法提交</span></span><br><span class="line"><span class="comment"># 通过 --no-verify 可以跳过校验（为了保证代码质量不建议此操作QwQ）</span></span><br><span class="line">git commit --no-verify -m <span class="string">&quot;commit message&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 一次性从工作区提交到本地仓库，相当于 git add . + git commit -m</span></span><br><span class="line">git commit -am</span><br></pre></td></tr></table></figure>
+
+<h3 id="git-push-提交到远程仓库"><a href="#git-push-提交到远程仓库" class="headerlink" title="git push: 提交到远程仓库"></a>git push: 提交到远程仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将当前本地分支 branch1 内容推送到远程分支 origin/branch1</span></span><br><span class="line">git push</span><br><span class="line"></span><br><span class="line"><span class="comment"># 若当前本地分支 branch1，没有对应的远程分支 origin/branch1，需要为推送当前分支并建立与远程上游的跟踪</span></span><br><span class="line">git push --set-upstream origin branch1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 强制提交</span></span><br><span class="line"><span class="comment"># 例如用在代码回滚后内容</span></span><br><span class="line">git push -f</span><br></pre></td></tr></table></figure>
+
+<h3 id="git-pull-拉取远程仓库并合并"><a href="#git-pull-拉取远程仓库并合并" class="headerlink" title="git pull: 拉取远程仓库并合并"></a>git pull: 拉取远程仓库并合并</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 若拉取并合并的远程分支和当前本地分支名称一致</span></span><br><span class="line"><span class="comment"># 例如当前本地分支为 branch1，要拉取并合并 origin/branch1，则直接执行：</span></span><br><span class="line">git pull</span><br><span class="line"></span><br><span class="line"><span class="comment"># 若拉取并合并的远程分支和当前本地分支名称不一致</span></span><br><span class="line">git pull &lt;远程主机名&gt; &lt;分支名&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 例如当前本地分支为 branch2，要拉取并合并 origin/branch1，则执行：</span></span><br><span class="line">git pull git@github.com:zh-lx/git-practice.git branch1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 rebase 模式进行合并</span></span><br><span class="line">git pull --rebase</span><br></pre></td></tr></table></figure>
+
+<h3 id="git-checkout-切换分支"><a href="#git-checkout-切换分支" class="headerlink" title="git checkout: 切换分支"></a>git checkout: 切换分支</h3><h4 id="git-checkout-用于切换分支及撤销工作区内容的修改"><a href="#git-checkout-用于切换分支及撤销工作区内容的修改" class="headerlink" title="git checkout 用于切换分支及撤销工作区内容的修改"></a>git checkout 用于切换分支及撤销工作区内容的修改</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换到已有的本地分支 branch1</span></span><br><span class="line">git checkout branch1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换到远程分支 branch1</span></span><br><span class="line">git checkout origin/branch1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 基于当前本地分支创建一个新分支 branch2，并切换至 branch2</span></span><br><span class="line">git checkout -b branch2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 基于远程分支 branch1 创建一个新分支 branch2，并切换至 branch2</span></span><br><span class="line">git checkout origin/branch1 -b branch2</span><br><span class="line"><span class="comment"># 当前创建的 branch2 关联的上游分支是 origin/branch1，所以 push 时需要如下命令关联到远程 branch2</span></span><br><span class="line">git push --set-upstream origin branch2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 撤销工作区 file 内容的修改。危险操作，谨慎使用</span></span><br><span class="line">git checkout -- &lt;file&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 撤销工作区所有内容的修改。危险操作，谨慎使用</span></span><br><span class="line">git checkout .</span><br></pre></td></tr></table></figure>
+
+<h3 id="git-restore-取消缓存"><a href="#git-restore-取消缓存" class="headerlink" title="git restore: 取消缓存"></a>git restore: 取消缓存</h3><h4 id="git-restore-用于将改动从暂存区退回工作区"><a href="#git-restore-用于将改动从暂存区退回工作区" class="headerlink" title="git restore 用于将改动从暂存区退回工作区"></a>git restore 用于将改动从暂存区退回工作区</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将 a.js 文件取消缓存（取消 add 操作，不改变文件内容）</span></span><br><span class="line">git reset --staged a.js</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将所有文件取消缓存</span></span><br><span class="line">git reset --staged .</span><br></pre></td></tr></table></figure>
+
+<h3 id="git-reset-回滚代码"><a href="#git-reset-回滚代码" class="headerlink" title="git reset: 回滚代码"></a>git reset: 回滚代码</h3><h4 id="git-reset-用于撤销各种-commit-操作，回滚代码"><a href="#git-reset-用于撤销各种-commit-操作，回滚代码" class="headerlink" title="git reset 用于撤销各种 commit 操作，回滚代码"></a>git reset 用于撤销各种 commit 操作，回滚代码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将某个版本的 commit 从本地仓库退回到工作区（取消 commit 和 add 操作，不改变文件内容）</span></span><br><span class="line"><span class="comment"># 默认不加 -- 参数时时 mixed</span></span><br><span class="line">git reset --mixed &lt;commit_sha&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将某个版本的 commit 从本地仓库退回到缓存区（取消 commit 操作，不取消 add，不改变文件内容）</span></span><br><span class="line">git reset --soft &lt;commit_sha&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取消某次 commit 的记录（取消 commit 和 add，且改变文件内容）</span></span><br><span class="line">git reset --hard &lt;commit_sha&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以上三种操作退回了 commit，都是退回本地仓库的 commit，没有改变远程仓库的 commit。通常再次修改后配合如下命令覆盖远程仓库的 commit：</span></span><br><span class="line">git push -f</span><br></pre></td></tr></table></figure>
+
+<h2 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a>git常用命令</h2><h3 id="git-revert-取消某次-commit-内容"><a href="#git-revert-取消某次-commit-内容" class="headerlink" title="git revert: 取消某次 commit 内容"></a>git revert: 取消某次 commit 内容</h3><h4 id="git-revert-相比于-git-reset，会取消某次-commit-更改的内容，但是不会取消掉-commit-记录，而是进行一次新的-commit-去覆盖要取消的那次-commit："><a href="#git-revert-相比于-git-reset，会取消某次-commit-更改的内容，但是不会取消掉-commit-记录，而是进行一次新的-commit-去覆盖要取消的那次-commit：" class="headerlink" title="git revert 相比于 git reset，会取消某次 commit 更改的内容，但是不会取消掉 commit 记录，而是进行一次新的 commit 去覆盖要取消的那次 commit："></a>git revert 相比于 git reset，会取消某次 commit 更改的内容，但是不会取消掉 commit 记录，而是进行一次新的 commit 去覆盖要取消的那次 commit：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 取消某次 commit 内容，但是保留 commit 记录</span></span><br><span class="line">git revert &lt;commit-sha&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="git-rebase-简洁-commit-记录"><a href="#git-rebase-简洁-commit-记录" class="headerlink" title="git rebase: 简洁 commit 记录"></a>git rebase: 简洁 commit 记录</h3><h4 id="git-rebase-命令主要是针对-commit-的，目的是令-commit-记录变得更加简洁清晰"><a href="#git-rebase-命令主要是针对-commit-的，目的是令-commit-记录变得更加简洁清晰" class="headerlink" title="git rebase 命令主要是针对 commit 的，目的是令 commit 记录变得更加简洁清晰"></a>git rebase 命令主要是针对 commit 的，目的是令 commit 记录变得更加简洁清晰</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">【多次commit合并为一次: 可以通过 git rebase -i 合并多次 commit 为一次。注意：此操作会修改 commit-sha，因此只能在自己的分支上操作，不能在公共分支操作，不然会引起他人的合并冲突】</span><br><span class="line"><span class="comment"># 进行 git rebase 可交互命令变基，end-commit-sha 可选，不填则默认为 HEAD</span></span><br><span class="line"><span class="comment"># start 和 end commit-sha 左开右闭原则</span></span><br><span class="line">git rebase -i &lt;start commit-sha&gt; &lt;end commit-sha&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 若是中间毫无冲突，变基则一步到位，否则需要逐步调整</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 上次变基为完成，继续上一次的变基操作</span></span><br><span class="line">git rebase --<span class="built_in">continue</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 变基有冲突时丢弃有冲突的 commit</span></span><br><span class="line">git rebase --skip</span><br><span class="line"></span><br><span class="line"><span class="comment"># 若是变基中途操作错误但是未彻底完成，可以回滚到变基之前的状态</span></span><br><span class="line">git rebase --abort</span><br></pre></td></tr></table></figure>
+
+<h3 id="git-rebase"><a href="#git-rebase" class="headerlink" title="git rebase"></a>git rebase</h3><h4 id="使用-rebase-代替-merge-相比于-git-merge，git-rebase-可以让分支合并后只显示-master-一条线，并且按照-commit-和时间去排序，使得-git-记录简洁和清晰了许多"><a href="#使用-rebase-代替-merge-相比于-git-merge，git-rebase-可以让分支合并后只显示-master-一条线，并且按照-commit-和时间去排序，使得-git-记录简洁和清晰了许多" class="headerlink" title="使用 rebase 代替 merge, 相比于 git merge，git rebase 可以让分支合并后只显示 master 一条线，并且按照 commit 和时间去排序，使得 git 记录简洁和清晰了许多"></a>使用 rebase 代替 merge, 相比于 git merge，git rebase 可以让分支合并后只显示 master 一条线，并且按照 commit 和时间去排序，使得 git 记录简洁和清晰了许多</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将本地某分支合并至当前分支</span></span><br><span class="line">git rebase &lt;分支名&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将远程某分支合并至当前分支</span></span><br><span class="line">git rebase &lt;远程主机名&gt; &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="git-cherry-pick-合并指定-commit"><a href="#git-cherry-pick-合并指定-commit" class="headerlink" title="git cherry-pick: 合并指定 commit"></a>git cherry-pick: 合并指定 commit</h3><h4 id="git-cherry-pick-可以选择某次-commit-的内容合并到当前分支"><a href="#git-cherry-pick-可以选择某次-commit-的内容合并到当前分支" class="headerlink" title="git cherry-pick 可以选择某次 commit 的内容合并到当前分支"></a>git cherry-pick 可以选择某次 commit 的内容合并到当前分支</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将 commit-sha1 的变动合并至当前分支</span></span><br><span class="line">git cherry-pick commit-sha1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将多次 commit 变动合并至当前分支</span></span><br><span class="line">git cherry-pick commit-sha1 commit-sha2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将 commit-sha1 到 commit-sha5 中间所有变动合并至当前分支，中间使用..</span></span><br><span class="line">git cherry-pick commit-sha1..commit-sha5</span><br><span class="line"></span><br><span class="line"><span class="comment"># pick 时解决冲突后继续 pick</span></span><br><span class="line">git cherry-pick --<span class="built_in">continue</span>：</span><br><span class="line"><span class="comment"># 多次 pick 时跳过本次 commit 的 pick 进入下一个 commit 的 pick</span></span><br><span class="line">git cherry-pick --skip</span><br><span class="line"><span class="comment"># 完全放弃 pick，恢复 pick 之前的状态</span></span><br><span class="line">git cherry-pick --abort</span><br><span class="line"><span class="comment"># 未冲突的 commit 自动变更，冲突的不要，退出这次 pick</span></span><br><span class="line">git cherry-pick --quit</span><br></pre></td></tr></table></figure>
+
+<h3 id="git-stash：缓存代码"><a href="#git-stash：缓存代码" class="headerlink" title="git stash：缓存代码"></a>git stash：缓存代码</h3><h4 id="git-stash-用于将当前的代码缓存起来，而不必提交，便于下次取出"><a href="#git-stash-用于将当前的代码缓存起来，而不必提交，便于下次取出" class="headerlink" title="git stash 用于将当前的代码缓存起来，而不必提交，便于下次取出"></a>git stash 用于将当前的代码缓存起来，而不必提交，便于下次取出</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 把本地的改动缓存起来</span></span><br><span class="line">git stash</span><br><span class="line"></span><br><span class="line"><span class="comment"># 缓存代码时添加备注，便于查找。强烈推荐</span></span><br><span class="line">git stash save <span class="string">&quot;message&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看缓存记录</span></span><br><span class="line"><span class="comment"># eg: stash@&#123;0&#125;: On feat-1.1: 活动功能</span></span><br><span class="line">git stash list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取出上一次缓存的代码，并删除这次缓存</span></span><br><span class="line">git stash pop</span><br><span class="line"><span class="comment"># 取出 index 为2缓存代码，并删除这次缓存，index 为对应 git stash list 所列出来的</span></span><br><span class="line">git stash pop stash@&#123;2&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取出上一次缓存的代码，但不删除这次缓存</span></span><br><span class="line">stash apply</span><br><span class="line"><span class="comment"># 取出 index 为2缓存代码，但不删除缓存</span></span><br><span class="line">git stash apply stash@&#123;2&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 清除某次的缓存</span></span><br><span class="line">git stash drop stash@&#123;n&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 清除所有缓存</span></span><br><span class="line">git stash clear</span><br></pre></td></tr></table></figure>
+
+<h2 id="git其它常用命令"><a href="#git其它常用命令" class="headerlink" title="git其它常用命令"></a>git其它常用命令</h2><h3 id="git-init-初始化仓库"><a href="#git-init-初始化仓库" class="headerlink" title="git init: 初始化仓库"></a>git init: 初始化仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># git init 会在本地生成一个 .git 文件夹，创建一个新的本地仓库</span></span><br><span class="line">git init</span><br></pre></td></tr></table></figure>
+
+<h3 id="git-remote-关联远程仓库"><a href="#git-remote-关联远程仓库" class="headerlink" title="git remote: 关联远程仓库"></a>git remote: 关联远程仓库</h3><h4 id="git-remote-用于将本地仓库与远程仓库关联"><a href="#git-remote-用于将本地仓库与远程仓库关联" class="headerlink" title="git remote 用于将本地仓库与远程仓库关联"></a>git remote 用于将本地仓库与远程仓库关联</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 关联本地 git init 到远程仓库</span></span><br><span class="line">git remote add origin &lt;git url&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新增其他上游仓库</span></span><br><span class="line">git remote add &lt;git url&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移除与远程仓库的管理</span></span><br><span class="line">git remote remove  &lt;git url&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改推送源</span></span><br><span class="line">git remote set-url origin &lt;git url&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="git-status-查看工作区状态"><a href="#git-status-查看工作区状态" class="headerlink" title="git status: 查看工作区状态"></a>git status: 查看工作区状态</h3><h4 id="git-status-用于查看工作区的文件，有哪些已经添加到了暂存区，哪些没有被添加："><a href="#git-status-用于查看工作区的文件，有哪些已经添加到了暂存区，哪些没有被添加：" class="headerlink" title="git status 用于查看工作区的文件，有哪些已经添加到了暂存区，哪些没有被添加："></a>git status 用于查看工作区的文件，有哪些已经添加到了暂存区，哪些没有被添加：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看当前工作区暂存区变动</span></span><br><span class="line">git status </span><br><span class="line"></span><br><span class="line"><span class="comment"># 以概要形式查看工作区暂存区变动</span></span><br><span class="line">git status -s </span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询工作区中是否有 stash 缓存</span></span><br><span class="line">git status --show-stash</span><br></pre></td></tr></table></figure>
+
+<h3 id="git-log-查看-commit-日志"><a href="#git-log-查看-commit-日志" class="headerlink" title="git log: 查看 commit 日志"></a>git log: 查看 commit 日志</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 显示 commit 日志</span></span><br><span class="line">git <span class="built_in">log</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 以简要模式显示 commit 日志</span></span><br><span class="line">git <span class="built_in">log</span> --oneline</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示最近 n 次的 commit 日志</span></span><br><span class="line">git <span class="built_in">log</span> -n</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示 commit 及分支的图形化变更</span></span><br><span class="line">git <span class="built_in">log</span> --graph --decorate</span><br></pre></td></tr></table></figure>
+
+<h3 id="git-branch-管理分支"><a href="#git-branch-管理分支" class="headerlink" title="git branch: 管理分支"></a>git branch: 管理分支</h3><h4 id="git-branch-常用于删除、重命名分支等"><a href="#git-branch-常用于删除、重命名分支等" class="headerlink" title="git branch 常用于删除、重命名分支等"></a>git branch 常用于删除、重命名分支等</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除分支</span></span><br><span class="line">git branch -D &lt;分支名&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重命名分支</span></span><br><span class="line">git branch -M &lt;老分支名&gt; &lt;新分支名&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将本地分支与远程分支关联</span></span><br><span class="line">git branch --set-upstream-to=origin/xxx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取消本地分支与远程分支的关联</span></span><br><span class="line">git branch --unset-upstream-to=origin/xxx</span><br></pre></td></tr></table></figure>
+
+<h3 id="git-rm：重新建立索引"><a href="#git-rm：重新建立索引" class="headerlink" title="git rm：重新建立索引"></a>git rm：重新建立索引</h3><h4 id="git-rm-用于修改-gitignore-文件的缓存，重新建立索引"><a href="#git-rm-用于修改-gitignore-文件的缓存，重新建立索引" class="headerlink" title="git rm 用于修改 .gitignore 文件的缓存，重新建立索引"></a>git rm 用于修改 .gitignore 文件的缓存，重新建立索引</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除某个文件索引（不会更改本地文件，只会是 .gitignore 范围重新生效）</span></span><br><span class="line">git <span class="built_in">rm</span> --cache -- &lt;文件名&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 清除所有文件的索引</span></span><br><span class="line"><span class="comment"># 例如你首次提交了很多文件，后来你建立了一个 .gitignore 文件，有些文件不想推送到远端仓库，但此时有的文件已经被推送了</span></span><br><span class="line"><span class="comment"># 使用此命令可以是 .gitignore 重新作用一遍，从远程仓库中取消这些文件，但不会更改你本地文件</span></span><br><span class="line">git <span class="built_in">rm</span> -r --cached .</span><br></pre></td></tr></table></figure>
+
+<h3 id="git-diff-对比差异"><a href="#git-diff-对比差异" class="headerlink" title="git diff: 对比差异"></a>git diff: 对比差异</h3><h4 id="git-diff-用于对比工作区、缓存区、本地仓库以及分支之间的代码差异"><a href="#git-diff-用于对比工作区、缓存区、本地仓库以及分支之间的代码差异" class="headerlink" title="git diff 用于对比工作区、缓存区、本地仓库以及分支之间的代码差异"></a>git diff 用于对比工作区、缓存区、本地仓库以及分支之间的代码差异</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 当工作区有变动，暂存区无变动，对比工作区和本地仓库间的代码差异</span></span><br><span class="line"><span class="comment">#  当工作区有变动和暂存区都有变动，对比工作区和暂存区的代码差异</span></span><br><span class="line">git diff</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示暂存区和本地仓库间的代码差异</span></span><br><span class="line">git diff --cached</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">git diff --staged</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示两个分支之间代码差异</span></span><br><span class="line">git diff &lt;分支名1&gt; &lt;分支名2&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="git-fetch-获取更新"><a href="#git-fetch-获取更新" class="headerlink" title="git fetch: 获取更新"></a>git fetch: 获取更新</h3><h4 id="git-fetch-用于本地仓库获取远程仓库的更新，不会merge到工作区"><a href="#git-fetch-用于本地仓库获取远程仓库的更新，不会merge到工作区" class="headerlink" title="git fetch 用于本地仓库获取远程仓库的更新，不会merge到工作区"></a>git fetch 用于本地仓库获取远程仓库的更新，不会merge到工作区</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取远程仓库特定分支的更新</span></span><br><span class="line">git fetch &lt;远程主机名&gt; &lt;分支名&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取远程仓库所有分支的更新</span></span><br><span class="line">git fetch --all</span><br></pre></td></tr></table></figure>
+
+<h3 id="git-merge-合并代码"><a href="#git-merge-合并代码" class="headerlink" title="git merge: 合并代码"></a>git merge: 合并代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将本地某分支合并至当前分支</span></span><br><span class="line">git merge &lt;分支名&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将远程某分支合并至当前分支</span></span><br><span class="line">git merge &lt;远程主机名&gt; &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
+
+      </section>
+
+      
+      
+        <nav class="article-nav">
+          
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+      <div class="card-cover" background-image-lazy data-img="/imgs/cover/cover3.jpg"></div>
+    
+    <div class="card-text">
+      
+        <a href="/2024/05/22/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">Linux常用命令</h2>
+        </a>
+      
+      <div class="card-text--row">Newer</div>
+    </div>
+  </article>
+</div>
+          
+          
+        </nav>
+      
+
+      <section class="page-message-container layout-padding">
+        
+
+
+  
+  
+
+  
+  
+
+
+      </section>
+    </div>
+    <div class="widget-info">
+      <section class="widget-author widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-body">
+    
+      <img src="/imgs/head/head.jpg" class="soft-size--round soft-style--box" alt="罗安民">
+    
+    
+      <h2>罗安民</h2>
+    
+    
+      <p>不忘初心，方得始终</p>
+    
+
+    <div class="count-box">
+      <div class="count-box--item">
+        <svg class="icon icon-article" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M240.51564747 647.74217627h196.07203239c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806V165.10332731c0-33.18142087-30.16492806-60.32985613-60.32985612-60.32985611H245.04038668C225.43318342 104.7734712 210.35071939 119.85593522 210.35071939 139.46313845V617.57724821c0 16.59071043 13.57421762 30.16492806 30.16492808 30.16492806z m663.62841731-452.47392089v482.63884894c0 33.18142087-27.14843525 60.32985613-60.32985612 60.32985613H180.18579134c-33.18142087 0-60.32985613-27.14843525-60.32985612-60.32985613V195.26825538c-49.77213131 0-90.49478418 40.72265287-90.49478417 90.49478417v452.4739209c0 49.77213131 40.72265287 90.49478418 90.49478417 90.49478417h286.56681657c16.59071043 0 30.16492806 13.57421762 30.16492807 30.16492807s13.57421762 30.16492806 30.16492805 30.16492806h90.49478418c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806s13.57421762-30.16492806 30.16492807-30.16492807h286.56681657c49.77213131 0 90.49478418-40.72265287 90.49478417-90.49478417V285.76303955c0-49.77213131-40.72265287-90.49478418-90.49478417-90.49478417zM587.41232014 647.74217627h191.54729318c19.60720323 0 34.68966726-15.08246403 34.68966729-34.68966727V134.93839925c0-16.59071043-13.57421762-30.16492806-30.16492808-30.16492805H617.57724821c-30.16492806 0-60.32985613 27.14843525-60.32985612 60.32985611v452.4739209c0 16.59071043 13.57421762 30.16492806 30.16492805 30.16492806z" fill="currentColor"></path>
+</svg>
+        <span>5</span>
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+        0
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+        0
+      </div>
+    </div>
+  </div>
+</section>
+
+      
+
+      
+<section class="widet-notice widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-notice" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M512 945.02305225v28.15620663a24.27259221 24.27259221 0 0 1-24.27259221 24.27259335H394.0352a48.54518557 48.54518557 0 0 1-41.74885888-23.78714112l-110.68302222-184.47170332a132.04290333 132.04290333 0 0 1-17.47626667-48.54518557h118.4502511a200.97706667 200.97706667 0 0 1 76.21594113 14.56355556l20.38897777 133.49925888a48.54518557 48.54518557 0 0 0 36.40888888 27.67075555l16.01991111 2.91271112a24.27259221 24.27259221 0 0 1 20.38897778 25.72894889zM997.45185223 463.45481443a194.18074112 194.18074112 0 0 1-38.8361489 116.50844445 24.75804445 24.75804445 0 0 1-36.4088889 0l-34.95253333-34.95253333a24.27259221 24.27259221 0 0 1-2.91271111-30.58346667 97.09036999 97.09036999 0 0 0 0-106.79940665 24.27259221 24.27259221 0 0 1 2.91271111-30.58346666l34.95253333-34.95253334a24.75804445 24.75804445 0 0 1 18.93262223-7.28177777 26.2144 26.2144 0 0 1 17.47626667 9.70903665A194.18074112 194.18074112 0 0 1 997.45185223 463.45481443z m-194.18074112-388.36148111v776.72296335a48.54518557 48.54518557 0 0 1-48.54518556 48.54518443h-28.64165888a48.54518557 48.54518557 0 0 1-33.98163001-14.07810332l-145.63555556-143.20829668A291.27111111 291.27111111 0 0 0 342.57730333 657.63555556H172.18370333a145.63555556 145.63555556 0 0 1-145.63555556-145.63555556v-97.09036999a145.63555556 145.63555556 0 0 1 145.63555556-145.63555556h170.3936a291.27111111 291.27111111 0 0 0 206.31703779-85.43952668l145.63555555-143.20829554a48.54518557 48.54518557 0 0 1 33.98162888-14.07810446H754.72592555a48.54518557 48.54518557 0 0 1 48.54518556 48.54518555z" fill="currentColor"></path>
+</svg>
+    <span>NOTICE</span>
+  </div>
+  <div class="widget-body">
+    <p>flex-block主题部分重构，详情查看https://github.com/miiiku/flex-block</p>
+  </div>
+</section>
+
+
+      <section class="widget-categorys widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+    <span>CATEGORYS</span>
+  </div>
+  <div class="widget-body">
+    <ul class="categorys-list">
+      
+    </ul>
+  </div>
+</section>
+
+      <section class="widget-tags widget-item  layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+    <span>TAGS</span>
+  </div>
+  <div class="widget-body">
+    <div class="tags-cloud">
+      
+    </div>
+  </div>
+</section>
+    </div>
+  </article>
+</div>
+
+    <!-- footer container -->
+<footer id="footer" class="footer">
+  <div class="footer-container">
+    
+    <div class="social-icons">
+      
+        
+      
+        
+      
+        
+      
+        
+          <a href="https://github.com/miiiku/" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
+            <svg class="icon icon-github" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M64.6 512c0 195.6 125.4 361.9 300.1 422.9 23.5 5.9 19.9-10.8 19.9-22.2v-77.6c-135.8 15.9-141.3-74-150.5-89-18.5-31.5-61.9-39.5-49-54.5 31-15.9 62.5 4 98.9 58 26.4 39.1 77.9 32.5 104.1 26 5.7-23.5 17.9-44.5 34.7-60.9-140.7-25.2-199.4-111.1-199.4-213.3 0-49.5 16.4-95.1 48.4-131.8-20.4-60.6 1.9-112.4 4.9-120.1 58.2-5.2 118.5 41.6 123.3 45.3 33.1-8.9 70.8-13.7 112.9-13.7 42.4 0 80.3 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.4-43.9 2.9 7.7 24.7 58.3 5.5 118.1 32.5 36.8 49 82.8 49 132.4 0 102.3-59 188.3-200.2 213.2 23.5 23.3 38.1 55.5 38.1 91.1v112.7c0.8 9 0 17.9 15.1 17.9C832.7 877 960.4 709.4 960.4 512.1c0-247.5-200.6-447.9-447.9-447.9C265 64.1 64.6 264.5 64.6 512z"></path>
+</svg>
+          </a>
+        
+      
+        
+          <a href="https://twitter.com/guanquanhong" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
+            <svg class="icon icon-twitter" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M962.285714 233.142857q-38.285714 56-92.571429 95.428571 0.571429 8 0.571429 24 0 74.285714-21.714286 148.285714t-66 142-105.428571 120.285714-147.428571 83.428571-184.571429 31.142857q-154.857143 0-283.428571-82.857143 20 2.285714 44.571429 2.285714 128.571429 0 229.142857-78.857143-60-1.142857-107.428571-36.857143t-65.142857-91.142857q18.857143 2.857143 34.857143 2.857143 24.571429 0 48.571429-6.285714-64-13.142857-106-63.714286t-42-117.428571l0-2.285714q38.857143 21.714286 83.428571 23.428571-37.714286-25.142857-60-65.714286t-22.285714-88q0-50.285714 25.142857-93.142857 69.142857 85.142857 168.285714 136.285714t212.285714 56.857143q-4.571429-21.714286-4.571429-42.285714 0-76.571429 54-130.571429t130.571429-54q80 0 134.857143 58.285714 62.285714-12 117.142857-44.571429-21.142857 65.714286-81.142857 101.714286 53.142857-5.714286 106.285714-28.571429z"></path>
+</svg>
+          </a>
+        
+      
+    </div>
+     
+    <p>&copy; 2026 <a href="/" target="_blank">Luo Anmin</a></p>
+
+    
+
+    <p>Powered by <a href="https://hexo.io" target="_blank" rel="noopener noreferrer">Hexo</a> Theme - <a href="https://github.com/miiiku/flex-block" target="_blank" rel="noopener noreferrer author">flex-block</a></p>
+
+    <p>
+      <a href="javascript:;" id="theme-light">🌞 浅色</a>
+      <a href="javascript:;" id="theme-dark">🌛 深色</a>
+      <a href="javascript:;" id="theme-auto">🤖️ 自动</a>
+    </p>
+  </div>
+</footer>
+  </div>
+
+  <div class="back-to-top-fixed soft-size--round soft-style--box">
+    <svg class="icon icon-back-to-top" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <path d="M725.333333 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8l-213.333333-213.333333c-17.066667-17.066667-17.066667-42.666667 0-59.733333s42.666667-17.066667 59.733333 0l213.333333 213.333333c17.066667 17.066667 17.066667 42.666667 0 59.733333C746.666667 422.4 738.133333 426.666667 725.333333 426.666667z"></path>
+      <path d="M298.666667 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8-17.066667-17.066667-17.066667-42.666667 0-59.733333l213.333333-213.333333c17.066667-17.066667 42.666667-17.066667 59.733333 0s17.066667 42.666667 0 59.733333l-213.333333 213.333333C320 422.4 311.466667 426.666667 298.666667 426.666667z"></path>
+      <path d="M512 896c-25.6 0-42.666667-17.066667-42.666667-42.666667L469.333333 170.666667c0-25.6 17.066667-42.666667 42.666667-42.666667s42.666667 17.066667 42.666667 42.666667l0 682.666667C554.666667 878.933333 537.6 896 512 896z"></path>
+    </svg>
+  </div>
+
+  
+  <!-- aplayer -->
+
+
+  <!-- aplayer 音频 start -->
+  <link rel="stylesheet" href="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.css">
+  <script type="text/javascript" src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+  <script type="text/javascript">
+    const aplayer = document.querySelectorAll(".aplayer-box");
+    aplayer && initaplayer(aplayer);
+    function initaplayer(els) {
+      let elsArr = Array.from(els);
+      elsArr.forEach(el => {
+        let params = {
+          container: el,
+          audio: { ...el.dataset },
+          theme: "#b7daff",
+          autoplay: true,
+          loop: false,
+          mutex: true,
+        }
+        if (el.dataset.lrc) {
+          params['lrcType'] = 3
+        }
+        new APlayer(params);
+      });
+    }
+  </script>
+  <!-- aplayer 音频 end -->
+  
+
+
+<!-- dplayer -->
+
+
+<!-- copy button  -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+
+<!-- https://clipboardjs.com/ -->
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+  <!-- 尾部用户自定义相关内容 -->
+</body>
+</html>

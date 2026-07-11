@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#3367D6"/>
+  <link rel="apple-touch-icon" href="/icons-192.png">
+  <link rel="manifest" href="/manifest.json">
+  
+  <meta name="generator" content="Hexo 8.1.2">
+
+  
+    <meta name="description" content="记录生活点滴，分享技术经验">
+  
+
+  
+    <meta name="keywords" content="记录">
+  
+
+  
+    <meta name="author" content="Luo Anmin">
+  
+
+  
+
+  
+
+  <title>Linux常用命令 | lam博客</title>
+
+  
+
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+
+  <!--mathjax latex数学公式显示支持-->
+  
+  
+
+  
+
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+  <div class="root-container">
+    
+<!-- header container -->
+<header class="header-container post">
+  
+    <div class="post-image" style="background-image: url(/imgs/cover/cover3.jpg)"></div>
+  
+
+  <!-- navbar -->
+<nav class="navbar">
+  <div class="navbar-content">
+    <!-- logo -->
+    <div class="navbar-logo">
+      <a href="/">
+        
+          lam博客
+        
+      </a>
+    </div>
+    <!-- link -->
+    <div class="navbar-link">
+      <div class="navbar-btn">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul class="navbar-list">
+        
+          <li class="navbar-list-item"><a href="/">首页</a></li>
+        
+          <li class="navbar-list-item"><a href="/links">友链</a></li>
+        
+          <li class="navbar-list-item"><a href="/about">关于</a></li>
+        
+          <li class="navbar-list-item"><a href="/archives">归档</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+    <div class="header-content">
+      <div class="post-text layout-block">
+        <div class="layout-margin">
+          <h1 class="title-wrap">Linux常用命令</h1>
+          <h2 class="title-sub-wrap">
+            <strong>Luo Anmin</strong>
+            <span>发布于</span>
+            <time  class="article-date" datetime="2024-05-21T16:00:00.000Z" itemprop="datePublished">2024-05-22</time>
+          </h2>
+          
+            <h2 class="last-time">
+              <span>最后更新于</span>
+              <time  class="article-updated" datetime="2026-07-11T22:40:21.209Z" itemprop="dateUpdated">2026-07-12</time>
+            </h2>
+          
+          
+          <ul class="wrap-list dark">
+  
+</ul>
+          <ul class="wrap-list dark">
+  
+</ul>
+        </div>
+      </div>
+    </div>
+  
+
+  
+  
+  
+</header>
+
+    <!-- 文章 -->
+
+<!-- 文章内容 -->
+<div class="body-container">
+  <article class="content-container layout-block post-container">
+    <div class="article-info">
+      
+      
+      
+      
+      <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
+        <div class="aplayer-box" data-name='我梦见我梦见我' data-artist='本兮' data-url='/music/本兮 - 我梦见我梦见我.mp3' data-cover='/imgs/content/cover2-music.png' ></div>
+
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="linux目录结构"><a href="#linux目录结构" class="headerlink" title="linux目录结构"></a>linux目录结构</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/bin        二进制文件，系统常规命令</span><br><span class="line">/boot       系统启动分区，系统启动时读取的文件</span><br><span class="line">/dev        设备文件</span><br><span class="line">/etc        大多数配置文件</span><br><span class="line">/home       普通用户的家目录</span><br><span class="line">/lib        32位函数库</span><br><span class="line">/lib64      64位库</span><br><span class="line">/media      手动临时挂载点</span><br><span class="line">/mnt        手动临时挂载点</span><br><span class="line">/opt        第三方软件安装位置</span><br><span class="line">/proc       进程信息及硬件信息</span><br><span class="line">/root       临时设备的默认挂载点</span><br><span class="line">/sbin       系统管理命令</span><br><span class="line">/srv        数据</span><br><span class="line">/var        数据</span><br><span class="line">/sys        内核相关信息</span><br><span class="line">/tmp        临时文件</span><br><span class="line">/usr        用户相关设定</span><br></pre></td></tr></table></figure>
+
+<h2 id="linux常用命令"><a href="#linux常用命令" class="headerlink" title="linux常用命令"></a>linux常用命令</h2><h3 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">1 关闭系统</span><br><span class="line"><span class="comment"># 立刻关机</span></span><br><span class="line">  shutdown -h now 或者 poweroff</span><br><span class="line"><span class="comment"># 两分钟后关机</span></span><br><span class="line">  shutdown -h 2</span><br><span class="line">2 关闭重启</span><br><span class="line"><span class="comment"># 立刻重启</span></span><br><span class="line">  shutdown -r now 或者 reboot</span><br><span class="line"><span class="comment"># 两分钟后重启</span></span><br><span class="line">  shutdown -r 2 </span><br><span class="line">3 帮助命令（<span class="built_in">help</span>）</span><br><span class="line">  ifconfig  --<span class="built_in">help</span></span><br><span class="line">4 命令说明书（man）</span><br><span class="line">  man shutdown         //打开命令说明后，可按<span class="string">&quot;q&quot;</span>键退出</span><br><span class="line">5 切换用户（su）</span><br><span class="line">  su yao               //切换为用户<span class="string">&quot;yao&quot;</span>,输入后回车需要输入该用户的密码</span><br><span class="line">  <span class="built_in">exit</span>                 //退出当前用户</span><br></pre></td></tr></table></figure>
+
+<h3 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">1 切换目录（<span class="built_in">cd</span>）</span><br><span class="line">  <span class="built_in">cd</span> /                 //切换到根目录</span><br><span class="line">  <span class="built_in">cd</span> /bin              //切换到根目录下的bin目录</span><br><span class="line">  <span class="built_in">cd</span> ../               //切换到上一级目录 或者使用命令：<span class="built_in">cd</span> ..</span><br><span class="line">  <span class="built_in">cd</span> ~                 //切换到home目录</span><br><span class="line">  <span class="built_in">cd</span> -                 //切换到上次访问的目录</span><br><span class="line">  <span class="built_in">cd</span> xx(文件夹名)       //切换到本目录下的名为xx的文件目录，如果目录不存在报错</span><br><span class="line">  <span class="built_in">cd</span> /xxx/xx/x         //可以输入完整的路径，直接切换到目标目录，输入过程中可以使用tab键快速补全</span><br><span class="line"></span><br><span class="line">2 查看目录（<span class="built_in">ls</span> ）</span><br><span class="line">  <span class="built_in">ls</span>                   //查看当前目录下的所有目录和文件</span><br><span class="line">  <span class="built_in">ls</span> -a                //查看当前目录下的所有目录和文件（包括隐藏的文件）</span><br><span class="line">  <span class="built_in">ls</span> -l                //列表查看当前目录下的所有目录和文件（列表查看，显示更多信息），与命令<span class="string">&quot;ll&quot;</span>效果一样</span><br><span class="line">  <span class="built_in">ls</span> /bin              //查看指定目录下的所有目录和文件 </span><br><span class="line"></span><br><span class="line">3 创建目录（<span class="built_in">mkdir</span> ）</span><br><span class="line">  <span class="built_in">mkdir</span> tools          //在当前目录下创建一个名为tools的目录</span><br><span class="line">  <span class="built_in">mkdir</span> /bin/tools     //在指定目录下创建一个名为tools的目录</span><br><span class="line"></span><br><span class="line">3 删除目录与文件（<span class="built_in">rm</span>）</span><br><span class="line">  <span class="built_in">rm</span> 文件名              //删除当前目录下的文件</span><br><span class="line">  <span class="built_in">rm</span> -f 文件名           //删除当前目录的的文件（不询问）</span><br><span class="line">  <span class="built_in">rm</span> -r 文件夹名         //递归删除当前目录下此名的目录</span><br><span class="line">  <span class="built_in">rm</span> -rf 文件夹名        //递归删除当前目录下此名的目录（不询问）</span><br><span class="line">  <span class="built_in">rm</span> -rf *              //将当前目录下的所有目录和文件全部删除</span><br><span class="line">  <span class="built_in">rm</span> -rf /*             //将根目录下的所有文件全部删除【慎用！相当于格式化系统】</span><br><span class="line"></span><br><span class="line">4 修改目录（<span class="built_in">mv</span>）</span><br><span class="line">  <span class="built_in">mv</span> 当前目录名 新目录名        //修改目录名，同样适用与文件操作</span><br><span class="line">  <span class="built_in">mv</span> /usr/tmp/tool /opt       //将/usr/tmp目录下的tool目录剪切到 /opt目录下面</span><br><span class="line">  <span class="built_in">mv</span> -r /usr/tmp/tool /opt    //递归剪切目录中所有文件和文件夹</span><br><span class="line"></span><br><span class="line">5 拷贝目录（<span class="built_in">cp</span>）</span><br><span class="line">  <span class="built_in">cp</span> /usr/tmp/tool /opt       //将/usr/tmp目录下的tool目录复制到 /opt目录下面</span><br><span class="line">  <span class="built_in">cp</span> -r /usr/tmp/tool /opt    //递归剪复制目录中所有文件和文件夹</span><br><span class="line"></span><br><span class="line">6 搜索目录（find）</span><br><span class="line">  find /bin -name <span class="string">&#x27;a*&#x27;</span>        //查找/bin目录下的所有以a开头的文件或者目录</span><br><span class="line"></span><br><span class="line">7 查看当前目录（<span class="built_in">pwd</span>）</span><br><span class="line">  <span class="built_in">pwd</span>                         //显示当前位置路径</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">1 新增文件（<span class="built_in">touch</span>）</span><br><span class="line">   <span class="built_in">touch</span>  a.txt         //在当前目录下创建名为a的txt文件（文件不存在），如果文件存在，将文件时间属性修改为当前系统时间</span><br><span class="line"></span><br><span class="line">2 删除文件（<span class="built_in">rm</span>）</span><br><span class="line">  <span class="built_in">rm</span> 文件名              //删除当前目录下的文件</span><br><span class="line">  <span class="built_in">rm</span> -f 文件名           //删除当前目录的的文件（不询问）</span><br><span class="line"></span><br><span class="line">3 编辑文件（vi、vim）</span><br><span class="line">  vi 文件名              //打开需要编辑的文件</span><br><span class="line">  --进入后，操作界面有三种模式：命令模式（<span class="built_in">command</span> mode）、插入模式（Insert mode）和底行模式（last line mode）</span><br><span class="line">  命令模式</span><br><span class="line">  -刚进入文件就是命令模式，通过方向键控制光标位置，</span><br><span class="line">  -使用命令<span class="string">&quot;dd&quot;</span>删除当前整行</span><br><span class="line">  -使用命令<span class="string">&quot;/字段&quot;</span>进行查找</span><br><span class="line">  -按<span class="string">&quot;i&quot;</span>在光标所在字符前开始插入</span><br><span class="line">  -按<span class="string">&quot;a&quot;</span>在光标所在字符后开始插入</span><br><span class="line">  -按<span class="string">&quot;o&quot;</span>在光标所在行的下面另起一新行插入</span><br><span class="line">  -按<span class="string">&quot;：&quot;</span>进入底行模式</span><br><span class="line">  插入模式</span><br><span class="line">  -此时可以对文件内容进行编辑，左下角会显示 <span class="string">&quot;-- 插入 --&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">  -按&quot;</span>ESC<span class="string">&quot;进入底行模式</span></span><br><span class="line"><span class="string">  底行模式</span></span><br><span class="line"><span class="string">  -退出编辑：      :q</span></span><br><span class="line"><span class="string">  -强制退出：      :q!</span></span><br><span class="line"><span class="string">  -保存并退出：    :wq</span></span><br><span class="line"><span class="string">  ## 操作步骤示例 ##</span></span><br><span class="line"><span class="string">  1.保存文件：按&quot;</span>ESC<span class="string">&quot; -&gt; 输入&quot;</span>:<span class="string">&quot; -&gt; 输入&quot;</span>wq<span class="string">&quot;,回车     //保存并退出编辑</span></span><br><span class="line"><span class="string">  2.取消操作：按&quot;</span>ESC<span class="string">&quot; -&gt; 输入&quot;</span>:<span class="string">&quot; -&gt; 输入&quot;</span>q!<span class="string">&quot;,回车     //撤销本次修改并退出编辑</span></span><br><span class="line"><span class="string">  ## 补充 ##</span></span><br><span class="line"><span class="string">  vim +10 filename.txt                   //打开文件并跳到第10行</span></span><br><span class="line"><span class="string">  vim -R /etc/passwd                     //以只读模式打开文件</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">4 查看文件</span></span><br><span class="line"><span class="string">  cat a.txt          //查看文件最后一屏内容</span></span><br><span class="line"><span class="string">  less a.txt         //PgUp向上翻页，PgDn向下翻页，&quot;</span>q<span class="string">&quot;退出查看</span></span><br><span class="line"><span class="string">  more a.txt         //显示百分比，回车查看下一行，空格查看下一页，&quot;</span>q<span class="string">&quot;退出查看</span></span><br><span class="line"><span class="string">  tail -100 a.txt    //查看文件的后100行，&quot;</span>Ctrl+C<span class="string">&quot;退出查看</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1 权限说明</span><br><span class="line">  文件权限简介：<span class="string">&#x27;r&#x27;</span> 代表可读（4），<span class="string">&#x27;w&#x27;</span> 代表可写（2），<span class="string">&#x27;x&#x27;</span> 代表执行权限（1），括号内代表<span class="string">&quot;8421法&quot;</span></span><br><span class="line">  <span class="comment">##文件权限信息示例：-rwxrw-r--</span></span><br><span class="line">  -第一位：<span class="string">&#x27;-&#x27;</span>就代表是文件，<span class="string">&#x27;d&#x27;</span>代表是文件夹</span><br><span class="line">  -第一组三位：拥有者的权限</span><br><span class="line">  -第二组三位：拥有者所在的组，组员的权限</span><br><span class="line">  -第三组三位：代表的是其他用户的权限</span><br><span class="line"></span><br><span class="line">2 文件权限</span><br><span class="line">  普通授权    <span class="built_in">chmod</span> +x a.txt    </span><br><span class="line">  8421法     <span class="built_in">chmod</span> 777 a.txt     //1+2+4=7，<span class="string">&quot;7&quot;</span>说明授予所有权限</span><br></pre></td></tr></table></figure>
+
+<h3 id="打包与解压"><a href="#打包与解压" class="headerlink" title="打包与解压"></a>打包与解压</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">1 说明</span><br><span class="line">  .zip、.rar        //windows系统中压缩文件的扩展名</span><br><span class="line">  .tar              //Linux中打包文件的扩展名</span><br><span class="line">  .gz               //Linux中压缩文件的扩展名</span><br><span class="line">  .tar.gz           //Linux中打包并压缩文件的扩展名</span><br><span class="line"></span><br><span class="line">2 打包文件</span><br><span class="line">  tar -zcvf 打包压缩后的文件名 要打包的文件</span><br><span class="line">  参数说明：z：调用gzip压缩命令进行压缩; c：打包文件; v：显示运行过程; f：指定文件名;</span><br><span class="line">  示例：</span><br><span class="line">  tar -zcvf a.tar file1 file2,...      //多个文件压缩打包</span><br><span class="line"></span><br><span class="line">3 解压文件</span><br><span class="line">  tar -zxvf a.tar                      //解包至当前目录</span><br><span class="line">  tar -zxvf a.tar -C /usr------        //指定解压的位置</span><br><span class="line">  unzip test.zip             //解压*.zip文件 </span><br><span class="line">  unzip -l test.zip          //查看*.zip文件的内容 </span><br></pre></td></tr></table></figure>
+<h3 id="其他常用命令"><a href="#其他常用命令" class="headerlink" title="其他常用命令"></a>其他常用命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">1 find</span><br><span class="line">  find . -name <span class="string">&quot;*.c&quot;</span>     //将目前目录及其子目录下所有延伸档名是 c 的文件列出来</span><br><span class="line">  find . -<span class="built_in">type</span> f         //将目前目录其其下子目录中所有一般文件列出</span><br><span class="line">  find . -ctime -20      //将目前目录及其子目录下所有最近 20 天内更新过的文件列出</span><br><span class="line">  find /var/log -<span class="built_in">type</span> f -mtime +7 -ok <span class="built_in">rm</span> &#123;&#125; \;     //查找/var/log目录中更改时间在7日以前的普通文件，并在删除之前询问它们</span><br><span class="line">  find . -<span class="built_in">type</span> f -perm 644 -<span class="built_in">exec</span> <span class="built_in">ls</span> -l &#123;&#125; \;       //查找前目录中文件属主具有读、写权限，并且文件所属组的用户和其他用户具有读权限的文件</span><br><span class="line">  find / -<span class="built_in">type</span> f -size 0 -<span class="built_in">exec</span> <span class="built_in">ls</span> -l &#123;&#125; \;         //为了查找系统中所有文件长度为0的普通文件，并列出它们的完整路径</span><br><span class="line"></span><br><span class="line">2 whereis</span><br><span class="line">  whereis <span class="built_in">ls</span>             //将和<span class="built_in">ls</span>文件相关的文件都查找出来</span><br><span class="line"></span><br><span class="line">3 <span class="built_in">which</span></span><br><span class="line">  说明：<span class="built_in">which</span>指令会在环境变量<span class="variable">$PATH</span>设置的目录里查找符合条件的文件。</span><br><span class="line">  <span class="built_in">which</span> bash             //查看指令<span class="string">&quot;bash&quot;</span>的绝对路径</span><br><span class="line"></span><br><span class="line">4 <span class="built_in">sudo</span></span><br><span class="line">  说明：<span class="built_in">sudo</span>命令以系统管理者的身份执行指令，也就是说，经由 <span class="built_in">sudo</span> 所执行的指令就好像是 root 亲自执行。需要输入自己账户密码。</span><br><span class="line">  使用权限：在 /etc/sudoers 中有出现的使用者</span><br><span class="line">  <span class="built_in">sudo</span> -l                              //列出目前的权限</span><br><span class="line">  $ <span class="built_in">sudo</span> -u yao vi ~www/index.html    //以 yao 用户身份编辑  home 目录下www目录中的 index.html 文件</span><br><span class="line"></span><br><span class="line">5 grep</span><br><span class="line">  grep -i <span class="string">&quot;the&quot;</span> demo_file              //在文件中查找字符串(不区分大小写)</span><br><span class="line">  grep -A 3 -i <span class="string">&quot;example&quot;</span> demo_text     //输出成功匹配的行，以及该行之后的三行</span><br><span class="line">  grep -r <span class="string">&quot;ramesh&quot;</span> *                   //在一个文件夹中递归查询包含指定字符串的文件</span><br><span class="line"></span><br><span class="line">6 service</span><br><span class="line">  说明：service命令用于运行System V init脚本，这些脚本一般位于/etc/init.d文件下，这个命令可以直接运行这个文件夹里面的脚本，而不用加上路径</span><br><span class="line">  service ssh status      //查看服务状态 </span><br><span class="line">  service --status-all    //查看所有服务状态 </span><br><span class="line">  service ssh restart     //重启服务 </span><br><span class="line"></span><br><span class="line">7 free</span><br><span class="line">  说明：这个命令用于显示系统当前内存的使用情况，包括已用内存、可用内存和交换内存的情况 </span><br><span class="line">  free -g            //以G为单位输出内存的使用量，-g为GB，-m为MB，-k为KB，-b为字节 </span><br><span class="line">  free -t            //查看所有内存的汇总</span><br><span class="line"></span><br><span class="line">8 top</span><br><span class="line">  top               //显示当前系统中占用资源最多的一些进程, <span class="built_in">shift</span>+m 按照内存大小查看</span><br><span class="line"></span><br><span class="line">9 <span class="built_in">df</span></span><br><span class="line">  说明：显示文件系统的磁盘使用情况</span><br><span class="line">  <span class="built_in">df</span> -h            //一种易看的显示</span><br><span class="line"></span><br><span class="line">10 mount</span><br><span class="line">  mount /dev/sdb1 /u01              //挂载一个文件系统，需要先创建一个目录，然后将这个文件系统挂载到这个目录上</span><br><span class="line">  dev/sdb1 /u01 ext2 defaults 0 2   //添加到fstab中进行自动挂载，这样任何时候系统重启的时候，文件系统都会被加载 </span><br><span class="line"></span><br><span class="line">11 <span class="built_in">uname</span></span><br><span class="line">  说明：<span class="built_in">uname</span>可以显示一些重要的系统信息，例如内核名称、主机名、内核版本号、处理器类型之类的信息 </span><br><span class="line">  <span class="built_in">uname</span> -a</span><br><span class="line"></span><br><span class="line">12 yum</span><br><span class="line">  说明：安装插件命令</span><br><span class="line">  yum install httpd      //使用yum安装apache </span><br><span class="line">  yum update httpd       //更新apache </span><br><span class="line">  yum remove httpd       //卸载/删除apache </span><br><span class="line"></span><br><span class="line">13 rpm</span><br><span class="line">  说明：插件安装命令</span><br><span class="line">  rpm -ivh httpd-2.2.3-22.0.1.el5.i386.rpm      //使用rpm文件安装apache </span><br><span class="line">  rpm -uvh httpd-2.2.3-22.0.1.el5.i386.rpm      //使用rpm更新apache </span><br><span class="line">  rpm -ev httpd                                 //卸载/删除apache </span><br><span class="line"></span><br><span class="line">14 <span class="built_in">date</span></span><br><span class="line">  <span class="built_in">date</span> -s <span class="string">&quot;01/31/2010 23:59:53&quot;</span>   ///设置系统时间</span><br><span class="line"></span><br><span class="line">15 wget</span><br><span class="line">  说明：使用wget从网上下载软件、音乐、视频 </span><br><span class="line">  示例：wget http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-3.2.1.tar.gz</span><br><span class="line">  //下载文件并以指定的文件名保存文件</span><br><span class="line">  wget -O nagios.tar.gz http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-3.2.1.tar.gz</span><br><span class="line"></span><br><span class="line">16 ftp</span><br><span class="line">   ftp IP/hostname    //访问ftp服务器</span><br><span class="line">   mls *.html -       //显示远程主机上文件列表</span><br><span class="line"></span><br><span class="line">17 scp</span><br><span class="line">	scp /opt/data.txt  192.168.1.101:/opt/    //将本地opt目录下的data文件发送到192.168.1.101服务器的opt目录下</span><br></pre></td></tr></table></figure>
+
+<h3 id="系统管理"><a href="#系统管理" class="headerlink" title="系统管理"></a>系统管理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">1 防火墙操作</span><br><span class="line">  service iptables status      //查看iptables服务的状态</span><br><span class="line">  service iptables start       //开启iptables服务</span><br><span class="line">  service iptables stop        //停止iptables服务</span><br><span class="line">  service iptables restart     //重启iptables服务</span><br><span class="line">  chkconfig iptables off       //关闭iptables服务的开机自启动</span><br><span class="line">  chkconfig iptables on        //开启iptables服务的开机自启动</span><br><span class="line">  <span class="comment">##centos7 防火墙操作</span></span><br><span class="line">  systemctl status firewalld.service     //查看防火墙状态</span><br><span class="line">  systemctl stop firewalld.service       //关闭运行的防火墙</span><br><span class="line">  systemctl <span class="built_in">disable</span> firewalld.service    //永久禁止防火墙服务</span><br><span class="line"></span><br><span class="line">2 修改主机名（CentOS 7）</span><br><span class="line">  hostnamectl set-hostname 主机名</span><br><span class="line"></span><br><span class="line">3 查看网络</span><br><span class="line">  ifconfig</span><br><span class="line"></span><br><span class="line">4 修改IP</span><br><span class="line">  修改网络配置文件，文件地址：/etc/sysconfig/network-scripts/ifcfg-eth0</span><br><span class="line">  ------------------------------------------------</span><br><span class="line">  主要修改以下配置：  </span><br><span class="line">  TYPE=Ethernet               //网络类型</span><br><span class="line">  BOOTPROTO=static            //静态IP</span><br><span class="line">  DEVICE=ens00                //网卡名</span><br><span class="line">  IPADDR=192.168.1.100        //设置的IP</span><br><span class="line">  NETMASK=255.255.255.0       //子网掩码</span><br><span class="line">  GATEWAY=192.168.1.1         //网关</span><br><span class="line">  DNS1=192.168.1.1            //DNS</span><br><span class="line">  DNS2=8.8.8.8                //备用DNS</span><br><span class="line">  ONBOOT=<span class="built_in">yes</span>                  //系统启动时启动此设置</span><br><span class="line">  -------------------------------------------------</span><br><span class="line">  修改保存以后使用命令重启网卡：service network restart</span><br><span class="line"></span><br><span class="line">5 配置映射</span><br><span class="line">  修改文件： vi /etc/hosts</span><br><span class="line">  在文件最后添加映射地址，示例如下：</span><br><span class="line">   192.168.1.101  node1</span><br><span class="line">   192.168.1.102  node2</span><br><span class="line">   192.168.1.103  node3</span><br><span class="line">  配置好以后保存退出，输入命令：ping node1 ，可见实际 ping 的是 192.168.1.101。</span><br><span class="line"></span><br><span class="line">6 查看进程</span><br><span class="line">  ps -ef         //查看所有正在运行的进程</span><br><span class="line"></span><br><span class="line">7 结束进程</span><br><span class="line">  <span class="built_in">kill</span> pid       //杀死该pid的进程</span><br><span class="line">  <span class="built_in">kill</span> -9 pid    //强制杀死该进程   </span><br><span class="line"></span><br><span class="line">8 查看链接</span><br><span class="line">  ping IP        //查看与此IP地址的连接情况</span><br><span class="line">  netstat -an    //查看当前系统端口</span><br><span class="line">  netstat -an | grep 8080     //查看指定端口</span><br><span class="line"></span><br><span class="line">9 快速清屏</span><br><span class="line">  ctrl+l        //清屏，往上翻可以查看历史操作</span><br><span class="line"></span><br><span class="line">10 远程主机</span><br><span class="line">  ssh IP       //远程主机，需要输入用户名和密码</span><br></pre></td></tr></table></figure>
+      </section>
+
+      
+      
+        <nav class="article-nav">
+          
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+      <div class="card-cover" background-image-lazy data-img="/imgs/cover/cover5.jpg"></div>
+    
+    <div class="card-text">
+      
+        <a href="/2026/07/12/%E9%9B%AA%E6%99%AF/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">雪景</h2>
+        </a>
+      
+      <div class="card-text--row">Newer</div>
+    </div>
+  </article>
+</div>
+          
+          
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+      <div class="card-cover" background-image-lazy data-img="/imgs/cover/cover2.jpg"></div>
+    
+    <div class="card-text">
+      
+        <a href="/2024/05/20/git%E7%9A%84%E7%94%A8%E6%B3%95/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">git的用法</h2>
+        </a>
+      
+      <div class="card-text--row">Older</div>
+    </div>
+  </article>
+</div>
+          
+        </nav>
+      
+
+      <section class="page-message-container layout-padding">
+        
+
+
+  
+  
+
+  
+  
+
+
+      </section>
+    </div>
+    <div class="widget-info">
+      <section class="widget-author widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-body">
+    
+      <img src="/imgs/head/head.jpg" class="soft-size--round soft-style--box" alt="罗安民">
+    
+    
+      <h2>罗安民</h2>
+    
+    
+      <p>不忘初心，方得始终</p>
+    
+
+    <div class="count-box">
+      <div class="count-box--item">
+        <svg class="icon icon-article" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M240.51564747 647.74217627h196.07203239c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806V165.10332731c0-33.18142087-30.16492806-60.32985613-60.32985612-60.32985611H245.04038668C225.43318342 104.7734712 210.35071939 119.85593522 210.35071939 139.46313845V617.57724821c0 16.59071043 13.57421762 30.16492806 30.16492808 30.16492806z m663.62841731-452.47392089v482.63884894c0 33.18142087-27.14843525 60.32985613-60.32985612 60.32985613H180.18579134c-33.18142087 0-60.32985613-27.14843525-60.32985612-60.32985613V195.26825538c-49.77213131 0-90.49478418 40.72265287-90.49478417 90.49478417v452.4739209c0 49.77213131 40.72265287 90.49478418 90.49478417 90.49478417h286.56681657c16.59071043 0 30.16492806 13.57421762 30.16492807 30.16492807s13.57421762 30.16492806 30.16492805 30.16492806h90.49478418c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806s13.57421762-30.16492806 30.16492807-30.16492807h286.56681657c49.77213131 0 90.49478418-40.72265287 90.49478417-90.49478417V285.76303955c0-49.77213131-40.72265287-90.49478418-90.49478417-90.49478417zM587.41232014 647.74217627h191.54729318c19.60720323 0 34.68966726-15.08246403 34.68966729-34.68966727V134.93839925c0-16.59071043-13.57421762-30.16492806-30.16492808-30.16492805H617.57724821c-30.16492806 0-60.32985613 27.14843525-60.32985612 60.32985611v452.4739209c0 16.59071043 13.57421762 30.16492806 30.16492805 30.16492806z" fill="currentColor"></path>
+</svg>
+        <span>5</span>
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+        0
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+        0
+      </div>
+    </div>
+  </div>
+</section>
+
+      
+
+      
+<section class="widet-notice widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-notice" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M512 945.02305225v28.15620663a24.27259221 24.27259221 0 0 1-24.27259221 24.27259335H394.0352a48.54518557 48.54518557 0 0 1-41.74885888-23.78714112l-110.68302222-184.47170332a132.04290333 132.04290333 0 0 1-17.47626667-48.54518557h118.4502511a200.97706667 200.97706667 0 0 1 76.21594113 14.56355556l20.38897777 133.49925888a48.54518557 48.54518557 0 0 0 36.40888888 27.67075555l16.01991111 2.91271112a24.27259221 24.27259221 0 0 1 20.38897778 25.72894889zM997.45185223 463.45481443a194.18074112 194.18074112 0 0 1-38.8361489 116.50844445 24.75804445 24.75804445 0 0 1-36.4088889 0l-34.95253333-34.95253333a24.27259221 24.27259221 0 0 1-2.91271111-30.58346667 97.09036999 97.09036999 0 0 0 0-106.79940665 24.27259221 24.27259221 0 0 1 2.91271111-30.58346666l34.95253333-34.95253334a24.75804445 24.75804445 0 0 1 18.93262223-7.28177777 26.2144 26.2144 0 0 1 17.47626667 9.70903665A194.18074112 194.18074112 0 0 1 997.45185223 463.45481443z m-194.18074112-388.36148111v776.72296335a48.54518557 48.54518557 0 0 1-48.54518556 48.54518443h-28.64165888a48.54518557 48.54518557 0 0 1-33.98163001-14.07810332l-145.63555556-143.20829668A291.27111111 291.27111111 0 0 0 342.57730333 657.63555556H172.18370333a145.63555556 145.63555556 0 0 1-145.63555556-145.63555556v-97.09036999a145.63555556 145.63555556 0 0 1 145.63555556-145.63555556h170.3936a291.27111111 291.27111111 0 0 0 206.31703779-85.43952668l145.63555555-143.20829554a48.54518557 48.54518557 0 0 1 33.98162888-14.07810446H754.72592555a48.54518557 48.54518557 0 0 1 48.54518556 48.54518555z" fill="currentColor"></path>
+</svg>
+    <span>NOTICE</span>
+  </div>
+  <div class="widget-body">
+    <p>flex-block主题部分重构，详情查看https://github.com/miiiku/flex-block</p>
+  </div>
+</section>
+
+
+      <section class="widget-categorys widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+    <span>CATEGORYS</span>
+  </div>
+  <div class="widget-body">
+    <ul class="categorys-list">
+      
+    </ul>
+  </div>
+</section>
+
+      <section class="widget-tags widget-item  layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+    <span>TAGS</span>
+  </div>
+  <div class="widget-body">
+    <div class="tags-cloud">
+      
+    </div>
+  </div>
+</section>
+    </div>
+  </article>
+</div>
+
+    <!-- footer container -->
+<footer id="footer" class="footer">
+  <div class="footer-container">
+    
+    <div class="social-icons">
+      
+        
+      
+        
+      
+        
+      
+        
+          <a href="https://github.com/miiiku/" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
+            <svg class="icon icon-github" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M64.6 512c0 195.6 125.4 361.9 300.1 422.9 23.5 5.9 19.9-10.8 19.9-22.2v-77.6c-135.8 15.9-141.3-74-150.5-89-18.5-31.5-61.9-39.5-49-54.5 31-15.9 62.5 4 98.9 58 26.4 39.1 77.9 32.5 104.1 26 5.7-23.5 17.9-44.5 34.7-60.9-140.7-25.2-199.4-111.1-199.4-213.3 0-49.5 16.4-95.1 48.4-131.8-20.4-60.6 1.9-112.4 4.9-120.1 58.2-5.2 118.5 41.6 123.3 45.3 33.1-8.9 70.8-13.7 112.9-13.7 42.4 0 80.3 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.4-43.9 2.9 7.7 24.7 58.3 5.5 118.1 32.5 36.8 49 82.8 49 132.4 0 102.3-59 188.3-200.2 213.2 23.5 23.3 38.1 55.5 38.1 91.1v112.7c0.8 9 0 17.9 15.1 17.9C832.7 877 960.4 709.4 960.4 512.1c0-247.5-200.6-447.9-447.9-447.9C265 64.1 64.6 264.5 64.6 512z"></path>
+</svg>
+          </a>
+        
+      
+        
+          <a href="https://twitter.com/guanquanhong" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
+            <svg class="icon icon-twitter" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M962.285714 233.142857q-38.285714 56-92.571429 95.428571 0.571429 8 0.571429 24 0 74.285714-21.714286 148.285714t-66 142-105.428571 120.285714-147.428571 83.428571-184.571429 31.142857q-154.857143 0-283.428571-82.857143 20 2.285714 44.571429 2.285714 128.571429 0 229.142857-78.857143-60-1.142857-107.428571-36.857143t-65.142857-91.142857q18.857143 2.857143 34.857143 2.857143 24.571429 0 48.571429-6.285714-64-13.142857-106-63.714286t-42-117.428571l0-2.285714q38.857143 21.714286 83.428571 23.428571-37.714286-25.142857-60-65.714286t-22.285714-88q0-50.285714 25.142857-93.142857 69.142857 85.142857 168.285714 136.285714t212.285714 56.857143q-4.571429-21.714286-4.571429-42.285714 0-76.571429 54-130.571429t130.571429-54q80 0 134.857143 58.285714 62.285714-12 117.142857-44.571429-21.142857 65.714286-81.142857 101.714286 53.142857-5.714286 106.285714-28.571429z"></path>
+</svg>
+          </a>
+        
+      
+    </div>
+     
+    <p>&copy; 2026 <a href="/" target="_blank">Luo Anmin</a></p>
+
+    
+
+    <p>Powered by <a href="https://hexo.io" target="_blank" rel="noopener noreferrer">Hexo</a> Theme - <a href="https://github.com/miiiku/flex-block" target="_blank" rel="noopener noreferrer author">flex-block</a></p>
+
+    <p>
+      <a href="javascript:;" id="theme-light">🌞 浅色</a>
+      <a href="javascript:;" id="theme-dark">🌛 深色</a>
+      <a href="javascript:;" id="theme-auto">🤖️ 自动</a>
+    </p>
+  </div>
+</footer>
+  </div>
+
+  <div class="back-to-top-fixed soft-size--round soft-style--box">
+    <svg class="icon icon-back-to-top" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <path d="M725.333333 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8l-213.333333-213.333333c-17.066667-17.066667-17.066667-42.666667 0-59.733333s42.666667-17.066667 59.733333 0l213.333333 213.333333c17.066667 17.066667 17.066667 42.666667 0 59.733333C746.666667 422.4 738.133333 426.666667 725.333333 426.666667z"></path>
+      <path d="M298.666667 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8-17.066667-17.066667-17.066667-42.666667 0-59.733333l213.333333-213.333333c17.066667-17.066667 42.666667-17.066667 59.733333 0s17.066667 42.666667 0 59.733333l-213.333333 213.333333C320 422.4 311.466667 426.666667 298.666667 426.666667z"></path>
+      <path d="M512 896c-25.6 0-42.666667-17.066667-42.666667-42.666667L469.333333 170.666667c0-25.6 17.066667-42.666667 42.666667-42.666667s42.666667 17.066667 42.666667 42.666667l0 682.666667C554.666667 878.933333 537.6 896 512 896z"></path>
+    </svg>
+  </div>
+
+  
+  <!-- aplayer -->
+
+
+  <!-- aplayer 音频 start -->
+  <link rel="stylesheet" href="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.css">
+  <script type="text/javascript" src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+  <script type="text/javascript">
+    const aplayer = document.querySelectorAll(".aplayer-box");
+    aplayer && initaplayer(aplayer);
+    function initaplayer(els) {
+      let elsArr = Array.from(els);
+      elsArr.forEach(el => {
+        let params = {
+          container: el,
+          audio: { ...el.dataset },
+          theme: "#b7daff",
+          autoplay: true,
+          loop: false,
+          mutex: true,
+        }
+        if (el.dataset.lrc) {
+          params['lrcType'] = 3
+        }
+        new APlayer(params);
+      });
+    }
+  </script>
+  <!-- aplayer 音频 end -->
+  
+
+
+<!-- dplayer -->
+
+
+<!-- copy button  -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+
+<!-- https://clipboardjs.com/ -->
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+  <!-- 尾部用户自定义相关内容 -->
+</body>
+</html>

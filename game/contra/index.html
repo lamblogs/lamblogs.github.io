@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>魂斗罗小游戏</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+      color: #e0e0e0;
+    }
+    body { overflow: auto; }
+    body.standalone { overflow: hidden; }
+    .app {
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    body.standalone .app {
+      height: 100%;
+      max-height: 100dvh;
+      overflow: hidden;
+    }
+    .toolbar {
+      flex-shrink: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 16px;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(6px);
+    }
+    .title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #ff6b35;
+      text-shadow: 0 0 8px rgba(255, 107, 53, 0.5);
+    }
+    .status {
+      font-size: 13px;
+      font-weight: bold;
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 107, 53, 0.4);
+    }
+    .hint {
+      font-size: 12px;
+      color: #aaa;
+    }
+    button, .back {
+      padding: 7px 14px;
+      border: none;
+      border-radius: 20px;
+      font-size: 13px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      background: #ff6b35;
+      color: #fff;
+      box-shadow: 0 3px 0 #c44d1f;
+    }
+    button:active, .back:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 #c44d1f;
+    }
+    .game-area {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      overflow: hidden;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+      min-height: 0;
+    }
+    .game-wrap {
+      padding: 6px;
+      background: #0f0f1a;
+      border-radius: 8px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 0 0 2px #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+    }
+    canvas {
+      display: block;
+      border-radius: 4px;
+      image-rendering: pixelated;
+    }
+    .touch-controls {
+      display: none;
+      width: 100%;
+      gap: 8px;
+      user-select: none;
+      flex-shrink: 0;
+    }
+    .touch-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .touch-btn {
+      flex: 1;
+      padding: 14px 0;
+      background: rgba(255, 107, 53, 0.25);
+      border: 1px solid rgba(255, 107, 53, 0.5);
+      border-radius: 10px;
+      color: #fff;
+      font-size: 14px;
+      text-align: center;
+      touch-action: none;
+    }
+    .touch-btn:active { background: rgba(255, 107, 53, 0.5); }
+    @media (pointer: coarse) {
+      .touch-controls { display: flex; flex-direction: column; }
+      .hint { display: none; }
+    }
+    .overlay {
+      position: absolute;
+      inset: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.75);
+      border-radius: 4px;
+      z-index: 10;
+      gap: 12px;
+    }
+    .overlay h2 {
+      font-size: 28px;
+      color: #ff6b35;
+      text-shadow: 0 0 12px rgba(255, 107, 53, 0.6);
+    }
+    .overlay p { font-size: 14px; color: #ccc; }
+    .overlay.hidden { display: none; }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="toolbar">
+      <div class="title">魂斗罗</div>
+      <div class="status" id="status">得分: 0 | 生命: 3</div>
+      <span class="hint">A/D 移动 · W/↑ 跳跃 · J/空格 射击</span>
+      <button id="restart">重新开始</button>
+      <a class="back" href="/game/">返回游戏页</a>
+    </div>
+    <div class="game-area">
+      <div class="game-wrap">
+        <canvas id="game"></canvas>
+        <div class="overlay" id="overlay">
+          <h2 id="overlay-title">魂斗罗</h2>
+          <p id="overlay-msg">消灭敌人，抵达终点！</p>
+          <button id="start-btn">开始游戏</button>
+        </div>
+      </div>
+      <div class="touch-controls" id="touch">
+        <div class="touch-row">
+          <div class="touch-btn" data-key="left">← 左</div>
+          <div class="touch-btn" data-key="jump">↑ 跳</div>
+          <div class="touch-btn" data-key="right">右 →</div>
+        </div>
+        <div class="touch-row">
+          <div class="touch-btn" data-key="shoot" style="flex:2">射击</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    if (!document.querySelector('.root-container')) {
+      document.body.classList.add('standalone');
+    }
+
+    const canvas = document.getElementById('game');
+    const ctx = canvas.getContext('2d');
+    const statusEl = document.getElementById('status');
+    const overlay = document.getElementById('overlay');
+    const overlayTitle = document.getElementById('overlay-title');
+    const overlayMsg = document.getElementById('overlay-msg');
+    const startBtn = document.getElementById('start-btn');
+    const restartBtn = document.getElementById('restart');
+    const gameWrap = document.querySelector('.game-wrap');
+    const gameArea = document.querySelector('.game-area');
+    const toolbar = document.querySelector('.toolbar');
+
+    const GW = 640;
+    const GH = 360;
+    const GRAVITY = 0.55;
+    const LEVEL_W = 3200;
+
+    let scale = 1;
+    let keys = {};
+    let touchKeys = {};
+    let gameState = 'menu';
+    let camera = 0;
+    let score = 0;
+    let lives = 3;
+    let frame = 0;
+    let shootCd = 0;
+    let invincible = 0;
+
+    let player, bullets, enemies, enemyBullets, platforms, particles, flag;
+
+    function isDown(k) {
+      return keys[k] || touchKeys[k];
+    }
+
+    function resizeCanvas() {
+      const isStandalone = document.body.classList.contains('standalone');
+      const hasTouch = window.matchMedia('(pointer: coarse)').matches;
+      const areaRect = gameArea.getBoundingClientRect();
+      let maxW, maxH;
+      if (isStandalone) {
+        maxW = window.innerWidth - 24;
+        maxH = window.innerHeight - toolbar.offsetHeight - (hasTouch ? 100 : 16);
+      } else {
+        maxW = Math.min(areaRect.width, window.innerWidth) - 16;
+        maxH = window.innerHeight * 0.82 - toolbar.offsetHeight;
+      }
+      scale = Math.max(0.6, Math.min(maxW / GW, maxH / GH));
+      const w = Math.floor(GW * scale);
+      const h = Math.floor(GH * scale);
+      canvas.width = GW;
+      canvas.height = GH;
+      canvas.style.width = w + 'px';
+      canvas.style.height = h + 'px';
+      gameWrap.style.width = w + 12 + 'px';
+    }
+
+    function buildLevel() {
+      platforms = [
+        { x: 0, y: 300, w: LEVEL_W, h: 60 },
+        { x: 200, y: 240, w: 120, h: 16 },
+        { x: 400, y: 200, w: 100, h: 16 },
+        { x: 600, y: 250, w: 140, h: 16 },
+        { x: 850, y: 210, w: 80, h: 16 },
+        { x: 1000, y: 170, w: 120, h: 16 },
+        { x: 1200, y: 240, w: 160, h: 16 },
+        { x: 1450, y: 200, w: 100, h: 16 },
+        { x: 1650, y: 260, w: 180, h: 16 },
+        { x: 1900, y: 220, w: 120, h: 16 },
+        { x: 2100, y: 180, w: 140, h: 16 },
+        { x: 2350, y: 250, w: 200, h: 16 },
+        { x: 2600, y: 210, w: 100, h: 16 },
+        { x: 2800, y: 260, w: 200, h: 16 },
+      ];
+      flag = { x: LEVEL_W - 80, y: 252, w: 30, h: 48 };
+      enemies = [
+        { type: 'soldier', x: 350, y: 0, w: 24, h: 36, hp: 1, dir: -1, shootTimer: 90 },
+        { type: 'soldier', x: 500, y: 0, w: 24, h: 36, hp: 1, dir: -1, shootTimer: 60 },
+        { type: 'turret', x: 750, y: 266, w: 28, h: 28, hp: 3, dir: -1, shootTimer: 45 },
+        { type: 'soldier', x: 900, y: 0, w: 24, h: 36, hp: 1, dir: -1, shootTimer: 80 },
+        { type: 'flyer', x: 1100, y: 100, w: 28, h: 20, hp: 1, dir: -1, shootTimer: 70, baseY: 100 },
+        { type: 'soldier', x: 1300, y: 0, w: 24, h: 36, hp: 1, dir: -1, shootTimer: 50 },
+        { type: 'turret', x: 1550, y: 266, w: 28, h: 28, hp: 3, dir: -1, shootTimer: 40 },
+        { type: 'flyer', x: 1750, y: 80, w: 28, h: 20, hp: 1, dir: -1, shootTimer: 55, baseY: 80 },
+        { type: 'soldier', x: 2000, y: 0, w: 24, h: 36, hp: 1, dir: -1, shootTimer: 65 },
+        { type: 'soldier', x: 2200, y: 0, w: 24, h: 36, hp: 1, dir: -1, shootTimer: 45 },
+        { type: 'turret', x: 2450, y: 266, w: 28, h: 28, hp: 3, dir: -1, shootTimer: 35 },
+        { type: 'flyer', x: 2700, y: 90, w: 28, h: 20, hp: 1, dir: -1, shootTimer: 50, baseY: 90 },
+        { type: 'boss', x: 2950, y: 0, w: 40, h: 48, hp: 15, dir: -1, shootTimer: 30 },
+      ];
+      enemies.forEach(e => {
+        if (e.type === 'soldier' || e.type === 'boss') {
+          e.y = 300 - e.h;
+        }
+      });
+    }
+
+    function initGame() {
+      player = { x: 60, y: 240, w: 22, h: 36, vx: 0, vy: 0, facing: 1, onGround: false };
+      bullets = [];
+      enemyBullets = [];
+      particles = [];
+      score = 0;
+      lives = 3;
+      camera = 0;
+      frame = 0;
+      shootCd = 0;
+      invincible = 0;
+      buildLevel();
+      updateStatus();
+    }
+
+    function updateStatus(extra) {
+      if (extra) {
+        statusEl.textContent = extra;
+        return;
+      }
+      statusEl.textContent = `得分: ${score} | 生命: ${lives}`;
+    }
+
+    function showOverlay(title, msg, btnText) {
+      overlayTitle.textContent = title;
+      overlayMsg.textContent = msg;
+      startBtn.textContent = btnText || '开始游戏';
+      overlay.classList.remove('hidden');
+    }
+
+    function hideOverlay() {
+      overlay.classList.add('hidden');
+    }
+
+    function startGame() {
+      initGame();
+      gameState = 'playing';
+      hideOverlay();
+    }
+
+    function rectsOverlap(a, b) {
+      return a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
+    }
+
+    function spawnParticles(x, y, color, n) {
+      for (let i = 0; i < n; i++) {
+        particles.push({
+          x, y,
+          vx: (Math.random() - 0.5) * 4,
+          vy: (Math.random() - 0.5) * 4,
+          life: 20 + Math.random() * 10,
+          color
+        });
+      }
+    }
+
+    function shoot() {
+      if (shootCd > 0) return;
+      shootCd = 12;
+      const bx = player.facing === 1 ? player.x + player.w : player.x - 8;
+      bullets.push({
+        x: bx, y: player.y + 12, w: 10, h: 4,
+        vx: player.facing * 9, vy: 0, fromPlayer: true
+      });
+    }
+
+    function enemyShoot(e) {
+      const dx = player.x - e.x;
+      const dy = player.y - e.y;
+      const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+      const speed = e.type === 'boss' ? 4 : 3;
+      enemyBullets.push({
+        x: e.x + e.w / 2, y: e.y + e.h / 2, w: 6, h: 6,
+        vx: (dx / dist) * speed, vy: (dy / dist) * speed
+      });
+    }
+
+    function landOnPlatform(entity) {
+      entity.onGround = false;
+      for (const p of platforms) {
+        if (entity.x + entity.w > p.x && entity.x < p.x + p.w) {
+          const feet = entity.y + entity.h;
+          const prevFeet = feet - entity.vy;
+          if (entity.vy >= 0 && feet >= p.y && prevFeet <= p.y + 8 && entity.y + entity.h <= p.y + 20) {
+            entity.y = p.y - entity.h;
+            entity.vy = 0;
+            entity.onGround = true;
+          }
+        }
+      }
+      if (entity.y + entity.h > 300) {
+        entity.y = 300 - entity.h;
+        entity.vy = 0;
+        entity.onGround = true;
+      }
+    }
+
+    function updatePlayer() {
+      const speed = 3.2;
+      player.vx = 0;
+      if (isDown('left') || isDown('a')) { player.vx = -speed; player.facing = -1; }
+      if (isDown('right') || isDown('d')) { player.vx = speed; player.facing = 1; }
+      if ((isDown('up') || isDown('w') || isDown('jump')) && player.onGround) {
+        player.vy = -10.5;
+        player.onGround = false;
+      }
+      if (isDown('shoot') || isDown('j') || isDown(' ')) shoot();
+
+      player.vy += GRAVITY;
+      player.x += player.vx;
+      player.y += player.vy;
+      player.x = Math.max(0, Math.min(player.x, LEVEL_W - player.w));
+      landOnPlatform(player);
+
+      camera = Math.max(0, Math.min(player.x - GW * 0.35, LEVEL_W - GW));
+    }
+
+    function updateEnemies() {
+      for (let i = enemies.length - 1; i >= 0; i--) {
+        const e = enemies[i];
+        if (e.type === 'flyer') {
+          e.x -= 1.2;
+          e.y = e.baseY + Math.sin(frame * 0.05 + e.x * 0.01) * 30;
+        } else if (e.type === 'soldier') {
+          e.x += e.dir * 0.8;
+          if (Math.abs(e.x - player.x) < 200) e.dir = player.x < e.x ? -1 : 1;
+        }
+
+        e.shootTimer--;
+        const inRange = Math.abs(e.x - player.x) < 350 && Math.abs(e.y - player.y) < 200;
+        if (e.shootTimer <= 0 && inRange) {
+          enemyShoot(e);
+          e.shootTimer = e.type === 'boss' ? 25 : e.type === 'turret' ? 50 : 80;
+        }
+
+        if (rectsOverlap(player, e) && invincible <= 0) {
+          hurtPlayer();
+        }
+      }
+    }
+
+    function hurtPlayer() {
+      lives--;
+      invincible = 90;
+      spawnParticles(player.x + player.w / 2, player.y + player.h / 2, '#ff6b35', 12);
+      updateStatus();
+      if (lives <= 0) {
+        gameState = 'gameover';
+        showOverlay('游戏结束', `最终得分: ${score}`, '再来一次');
+      }
+    }
+
+    function updateBullets() {
+      for (let i = bullets.length - 1; i >= 0; i--) {
+        const b = bullets[i];
+        b.x += b.vx;
+        b.y += b.vy;
+        if (b.x < camera - 20 || b.x > camera + GW + 20) { bullets.splice(i, 1); continue; }
+
+        for (let j = enemies.length - 1; j >= 0; j--) {
+          if (rectsOverlap(b, enemies[j])) {
+            const e = enemies[j];
+            e.hp--;
+            spawnParticles(b.x, b.y, '#ffcc00', 6);
+            bullets.splice(i, 1);
+            if (e.hp <= 0) {
+              const pts = e.type === 'boss' ? 500 : e.type === 'turret' ? 100 : 50;
+              score += pts;
+              spawnParticles(e.x + e.w / 2, e.y + e.h / 2, '#ff4444', 15);
+              enemies.splice(j, 1);
+              updateStatus();
+            }
+            break;
+          }
+        }
+      }
+
+      for (let i = enemyBullets.length - 1; i >= 0; i--) {
+        const b = enemyBullets[i];
+        b.x += b.vx;
+        b.y += b.vy;
+        if (b.x < camera - 20 || b.x > camera + GW + 20 || b.y < -20 || b.y > GH + 20) {
+          enemyBullets.splice(i, 1);
+          continue;
+        }
+        if (rectsOverlap(b, player) && invincible <= 0) {
+          enemyBullets.splice(i, 1);
+          hurtPlayer();
+        }
+      }
+    }
+
+    function updateParticles() {
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.life--;
+        if (p.life <= 0) particles.splice(i, 1);
+      }
+    }
+
+    function checkWin() {
+      if (player.x + player.w >= flag.x) {
+        gameState = 'win';
+        score += 200;
+        updateStatus();
+        showOverlay('任务完成！', `得分: ${score} — 优秀战士！`, '再玩一次');
+      }
+    }
+
+    function update() {
+      if (gameState !== 'playing') return;
+      frame++;
+      if (shootCd > 0) shootCd--;
+      if (invincible > 0) invincible--;
+      updatePlayer();
+      updateEnemies();
+      updateBullets();
+      updateParticles();
+      checkWin();
+    }
+
+    function drawBg() {
+      const grad = ctx.createLinearGradient(0, 0, 0, GH);
+      grad.addColorStop(0, '#1a0a2e');
+      grad.addColorStop(0.5, '#2d1b4e');
+      grad.addColorStop(1, '#1a3a2a');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, GW, GH);
+
+      ctx.fillStyle = 'rgba(255,255,255,0.6)';
+      for (let i = 0; i < 30; i++) {
+        const sx = ((i * 97 + 13) % LEVEL_W - camera * 0.1) % GW;
+        const sy = (i * 53) % 120;
+        ctx.fillRect(sx < 0 ? sx + GW : sx, sy, 2, 2);
+      }
+
+      ctx.save();
+      ctx.translate(-camera * 0.3, 0);
+      ctx.fillStyle = '#0d2818';
+      for (let i = 0; i < 20; i++) {
+        const tx = i * 200;
+        ctx.beginPath();
+        ctx.moveTo(tx, 300);
+        ctx.lineTo(tx + 30, 200);
+        ctx.lineTo(tx + 60, 300);
+        ctx.fill();
+      }
+      ctx.restore();
+    }
+
+    function drawPlatforms() {
+      for (const p of platforms) {
+        const px = p.x - camera;
+        if (px + p.w < -10 || px > GW + 10) continue;
+        ctx.fillStyle = '#4a3728';
+        ctx.fillRect(px, p.y, p.w, p.h);
+        ctx.fillStyle = '#2d6b3f';
+        ctx.fillRect(px, p.y, p.w, 6);
+      }
+    }
+
+    function drawPlayer() {
+      const px = player.x - camera;
+      const blink = invincible > 0 && Math.floor(frame / 4) % 2;
+      if (blink) return;
+
+      ctx.fillStyle = '#ff6b35';
+      ctx.fillRect(px + 4, player.y + 8, 14, 20);
+      ctx.fillStyle = '#ffd700';
+      ctx.fillRect(px + 2, player.y, 18, 10);
+      ctx.fillStyle = '#333';
+      ctx.fillRect(px + (player.facing === 1 ? 14 : 4), player.y + 14, 12, 4);
+
+      ctx.fillStyle = '#c44d1f';
+      ctx.fillRect(px + 2, player.y + 28, 7, 8);
+      ctx.fillRect(px + 13, player.y + 28, 7, 8);
+    }
+
+    function drawEnemy(e) {
+      const ex = e.x - camera;
+      if (ex + e.w < -10 || ex > GW + 10) return;
+
+      if (e.type === 'flyer') {
+        ctx.fillStyle = '#9b59b6';
+        ctx.fillRect(ex, e.y, e.w, e.h);
+        ctx.fillStyle = '#e74c3c';
+        ctx.fillRect(ex + 4, e.y + 6, e.w - 8, 8);
+      } else if (e.type === 'turret') {
+        ctx.fillStyle = '#555';
+        ctx.fillRect(ex, e.y, e.w, e.h);
+        ctx.fillStyle = '#e74c3c';
+        ctx.beginPath();
+        ctx.arc(ex + e.w / 2, e.y + e.h / 2, 8, 0, Math.PI * 2);
+        ctx.fill();
+      } else if (e.type === 'boss') {
+        ctx.fillStyle = '#8b0000';
+        ctx.fillRect(ex, e.y, e.w, e.h);
+        ctx.fillStyle = '#ff4444';
+        ctx.fillRect(ex + 4, e.y + 4, e.w - 8, 10);
+        ctx.fillStyle = '#fff';
+        ctx.fillRect(ex + 8, e.y + 18, 8, 8);
+        ctx.fillRect(ex + 24, e.y + 18, 8, 8);
+        const barW = e.w;
+        ctx.fillStyle = '#333';
+        ctx.fillRect(ex, e.y - 10, barW, 5);
+        ctx.fillStyle = '#0f0';
+        ctx.fillRect(ex, e.y - 10, barW * (e.hp / 15), 5);
+      } else {
+        ctx.fillStyle = '#27ae60';
+        ctx.fillRect(ex + 2, e.y + 6, e.w - 4, e.h - 6);
+        ctx.fillStyle = '#e74c3c';
+        ctx.fillRect(ex + 4, e.y, e.w - 8, 10);
+      }
+    }
+
+    function drawBullets() {
+      ctx.fillStyle = '#ffeb3b';
+      for (const b of bullets) {
+        ctx.fillRect(b.x - camera, b.y, b.w, b.h);
+      }
+      ctx.fillStyle = '#ff4444';
+      for (const b of enemyBullets) {
+        ctx.beginPath();
+        ctx.arc(b.x - camera + 3, b.y + 3, 3, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function drawParticles() {
+      for (const p of particles) {
+        ctx.globalAlpha = p.life / 30;
+        ctx.fillStyle = p.color;
+        ctx.fillRect(p.x - camera, p.y, 3, 3);
+      }
+      ctx.globalAlpha = 1;
+    }
+
+    function drawFlag() {
+      const fx = flag.x - camera;
+      ctx.fillStyle = '#888';
+      ctx.fillRect(fx, flag.y, 4, flag.h);
+      ctx.fillStyle = '#e74c3c';
+      ctx.beginPath();
+      ctx.moveTo(fx + 4, flag.y);
+      ctx.lineTo(fx + 30, flag.y + 12);
+      ctx.lineTo(fx + 4, flag.y + 24);
+      ctx.fill();
+    }
+
+    function drawHUD() {
+      ctx.fillStyle = 'rgba(0,0,0,0.5)';
+      ctx.fillRect(8, 8, 160, 22);
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 13px monospace';
+      ctx.fillText(`SCORE ${score}`, 14, 23);
+      ctx.fillText(`LIVES ${lives}`, 100, 23);
+
+      const prog = Math.min(1, player.x / (LEVEL_W - 100));
+      ctx.fillStyle = '#333';
+      ctx.fillRect(8, GH - 16, GW - 16, 8);
+      ctx.fillStyle = '#ff6b35';
+      ctx.fillRect(8, GH - 16, (GW - 16) * prog, 8);
+    }
+
+    function draw() {
+      drawBg();
+      drawPlatforms();
+      drawFlag();
+      enemies.forEach(drawEnemy);
+      drawBullets();
+      if (gameState === 'playing') drawPlayer();
+      drawParticles();
+      drawHUD();
+    }
+
+    function loop() {
+      update();
+      draw();
+      requestAnimationFrame(loop);
+    }
+
+    document.addEventListener('keydown', (e) => {
+      const k = e.key.toLowerCase();
+      keys[k] = true;
+      if ([' ', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright'].includes(k)) e.preventDefault();
+      if (k === 'arrowleft') keys.left = true;
+      if (k === 'arrowright') keys.right = true;
+      if (k === 'arrowup') keys.up = true;
+    });
+    document.addEventListener('keyup', (e) => {
+      const k = e.key.toLowerCase();
+      keys[k] = false;
+      if (k === 'arrowleft') keys.left = false;
+      if (k === 'arrowright') keys.right = false;
+      if (k === 'arrowup') keys.up = false;
+    });
+
+    document.querySelectorAll('.touch-btn').forEach(btn => {
+      const key = btn.dataset.key;
+      const down = (e) => { e.preventDefault(); touchKeys[key] = true; };
+      const up = () => { touchKeys[key] = false; };
+      btn.addEventListener('touchstart', down);
+      btn.addEventListener('touchend', up);
+      btn.addEventListener('touchcancel', up);
+      btn.addEventListener('mousedown', down);
+      btn.addEventListener('mouseup', up);
+      btn.addEventListener('mouseleave', up);
+    });
+
+    startBtn.addEventListener('click', startGame);
+    restartBtn.addEventListener('click', () => {
+      gameState = 'menu';
+      showOverlay('魂斗罗', '消灭敌人，抵达终点！', '开始游戏');
+    });
+    window.addEventListener('resize', resizeCanvas);
+
+    initGame();
+    resizeCanvas();
+    showOverlay('魂斗罗', '消灭敌人，抵达终点！', '开始游戏');
+    loop();
+  </script>
+</body>
+</html>
